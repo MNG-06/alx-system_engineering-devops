@@ -1,2 +1,2 @@
-ip1=10
-echo "obase=2;$ip1" | bc
+#!/bin/bash
+echo $((2#BINARY)o)
