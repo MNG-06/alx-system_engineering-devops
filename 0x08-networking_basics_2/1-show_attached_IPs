@@ -1,12 +1,5 @@
 #!/bin/bash
 
-# Get all network interfaces
-interfaces=$(ip -o link show | awk -F': ' '{print $2}')
-
-# Loop through each interface and display its IPv4 address
-for iface in $interfaces; do
-    # Get the IPv4 address for the interface
-    ip -4 addr show $iface | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | while read -r ip; do
-        echo "Interface $iface has IPv4 address: $ip"
-    done
+ip -4 addr show | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | while read -r ip; do
+    echo "$ip"
 done
